@@ -14,10 +14,39 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import screen3 from './screen3';
 import Screen4 from './Screen4';
 import Screen3 from './screen3';
+import { FlatList } from 'react-native-gesture-handler';
 
 const Drawer = createDrawerNavigator()
 
 const DrawerContent = (props) => {
+
+    const [selectedButton, setSelectedButton] = useState(null);
+
+    const buttonData = [
+        { id: '1', label: 'Start' ,screen : Screen1},
+        { id: '2', label: 'Your Cart',screen : Screen2 },
+        { id: '3', label: 'Favourites',screen : Screen3 },
+        { id: '4', label: 'Your Orders' ,screen : Screen4},
+    ];
+
+    const handleButtonPress = (id) => {
+        setSelectedButton(id);
+    };
+
+    const renderButton = ({ item }) => (
+        <Pressable style={[styles.drawerBtnStyle, { marginTop: 10 },selectedButton === item.id && styles.selectedButton]}
+
+            onPress={() => { 
+                handleButtonPress(item.id)
+                props.navigation.navigate(item.screen, props) }}>
+            <View >
+                <Text style={[styles.drawerLblStyle,selectedButton === item.id && styles.selectedButtonTxt]}>
+                    {item.label}
+                </Text>
+            </View>
+        </Pressable>
+    );
+
     return (
 
         <View style={{ flex: 1, paddingTop: 100, justifyContent: 'top', }}>
@@ -32,15 +61,13 @@ const DrawerContent = (props) => {
                 </View>
             </Pressable>
 
-            <Pressable style={[styles.drawerBtnStyle, { marginTop: 30 }]}
+            <FlatList
+                data={buttonData}
+                renderItem={renderButton}
+                keyExtractor={(item) => item.id}
+            />
 
-                onPress={() => { props.navigation.navigate(Screen1, props) }}>
-                <View >
-                    <Text style={styles.drawerLblStyle}>
-                        Start
-                    </Text>
-                </View>
-            </Pressable>
+            {/*            
             <Pressable style={styles.drawerBtnStyle}
                 onPress={() => props.navigation.navigate(Screen2, props)}>
 
@@ -69,7 +96,7 @@ const DrawerContent = (props) => {
                         Your Orders
                     </Text>
                 </View>
-            </Pressable>
+            </Pressable> */}
 
         </View>
     );
@@ -132,7 +159,14 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         alignContent: 'center',
         justifyContent: 'center'
-        , marginLeft: 20
-    }
+        , marginLeft: 20,
+        borderRadius:10
+    },
+    selectedButton: {
+        backgroundColor: '#43242e',
+      },
+      selectedButtonTxt: {
+        color: '#c4594c',
+      },
 
 })

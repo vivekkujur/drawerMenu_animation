@@ -2,16 +2,17 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import DrawerScreenWrapper from './DrawerScreenWrapper'
 import AppBar from './AppBar'
+import { Styles } from '../styles/Styles'
 
 const Screen1 = (props) => {
     let screenName = "START"
 
     return (
-        <DrawerScreenWrapper>
-            <View style={{ backgroundColor: 'white', flex: 1 ,borderTopLeftRadius:30, padding:20,marginTop:20,marginLeft:20}}>
+        <DrawerScreenWrapper props={props}>
+            <View style={Styles.screenViewStyles}>
                <AppBar title={screenName} navigation={props.navigation} />
             </View>
-        </DrawerScreenWrapper>
+        </DrawerScreenWrapper >
     )
 }
 
