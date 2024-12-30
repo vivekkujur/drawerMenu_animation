@@ -1,7 +1,5 @@
 import {
-    createDrawerNavigator,
-    DrawerContentScrollView,
-    DrawerItem
+    createDrawerNavigator
 } from '@react-navigation/drawer';
 import Screen1 from './Screen1';
 import Screen2 from './Screen2';
@@ -9,12 +7,10 @@ import { Text, Image, Pressable, StyleSheet, TouchableOpacity, useAnimatedValue,
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useState } from 'react';
 // import { Animated } from 'react-native';
-import Animated, { Extrapolation, interpolate, useAnimatedStyle } from 'react-native-reanimated';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import screen3 from './screen3';
 import Screen4 from './Screen4';
 import Screen3 from './screen3';
 import { FlatList } from 'react-native-gesture-handler';
+import TabsNavigator from './tabs/TabsNavigator';
 
 const Drawer = createDrawerNavigator()
 
@@ -67,36 +63,7 @@ const DrawerContent = (props) => {
                 keyExtractor={(item) => item.id}
             />
 
-            {/*            
-            <Pressable style={styles.drawerBtnStyle}
-                onPress={() => props.navigation.navigate(Screen2, props)}>
 
-                <View >
-                    <Text style={styles.drawerLblStyle}>
-                        Your Cart
-                    </Text>
-                </View>
-            </Pressable>
-            <Pressable style={styles.drawerBtnStyle}
-                onPress={() => props.navigation.navigate(Screen3, props)}>
-
-
-                <View >
-                    <Text style={styles.drawerLblStyle}>
-                        Favourites
-                    </Text>
-                </View>
-            </Pressable>
-            <Pressable style={styles.drawerBtnStyle}
-                onPress={() => props.navigation.navigate(Screen4, props)}>
-
-
-                <View >
-                    <Text style={styles.drawerLblStyle}>
-                        Your Orders
-                    </Text>
-                </View>
-            </Pressable> */}
 
         </View>
     );

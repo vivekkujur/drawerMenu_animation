@@ -3,6 +3,7 @@ import React from 'react'
 import DrawerScreenWrapper from './DrawerScreenWrapper'
 import AppBar from './AppBar'
 import { Styles } from '../styles/Styles'
+import TabsNavigator from './tabs/TabsNavigator'
 
 const Screen1 = (props) => {
     let screenName = "START"
@@ -11,8 +12,10 @@ const Screen1 = (props) => {
         <DrawerScreenWrapper props={props}>
             <View style={Styles.screenViewStyles}>
                <AppBar title={screenName} navigation={props.navigation} />
+               <TabsNavigator/>
+
             </View>
-        </DrawerScreenWrapper >
+         </DrawerScreenWrapper >
     )
 }
 
