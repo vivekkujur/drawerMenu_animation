@@ -19,10 +19,10 @@ const DrawerContent = (props) => {
     const [selectedButton, setSelectedButton] = useState(null);
 
     const buttonData = [
-        { id: '1', label: 'Start' ,screen : Screen1},
-        { id: '2', label: 'Your Cart',screen : Screen2 },
-        { id: '3', label: 'Favourites',screen : Screen3 },
-        { id: '4', label: 'Your Orders' ,screen : Screen4},
+        { id: '1', label: 'Start', screen: Screen1 },
+        { id: '2', label: 'Your Cart', screen: Screen2 },
+        { id: '3', label: 'Favourites', screen: Screen3 },
+        { id: '4', label: 'Your Orders', screen: Screen4 },
     ];
 
     const handleButtonPress = (id) => {
@@ -30,13 +30,14 @@ const DrawerContent = (props) => {
     };
 
     const renderButton = ({ item }) => (
-        <Pressable style={[styles.drawerBtnStyle, { marginTop: 10 },selectedButton === item.id && styles.selectedButton]}
+        <Pressable style={[styles.drawerBtnStyle, { marginTop: 10 }, selectedButton === item.id && styles.selectedButton]}
 
-            onPress={() => { 
+            onPress={() => {
                 handleButtonPress(item.id)
-                props.navigation.navigate(item.screen, props) }}>
+                props.navigation.navigate(item.screen, props)
+            }}>
             <View >
-                <Text style={[styles.drawerLblStyle,selectedButton === item.id && styles.selectedButtonTxt]}>
+                <Text style={[styles.drawerLblStyle, selectedButton === item.id && styles.selectedButtonTxt]}>
                     {item.label}
                 </Text>
             </View>
@@ -57,11 +58,25 @@ const DrawerContent = (props) => {
                 </View>
             </Pressable>
 
-            <FlatList
-                data={buttonData}
-                renderItem={renderButton}
-                keyExtractor={(item) => item.id}
-            />
+            <View>
+                <FlatList
+                    data={buttonData}
+                    renderItem={renderButton}
+                    keyExtractor={(item) => item.id}
+                />
+            </View>
+
+
+            <View style={{ height: 1, width: '100%', backgroundColor: 'grey', marginHorizontal: 20, marginTop: 30 }} />
+
+            <Pressable style={[styles.drawerBtnStyle, { marginTop: 10 }]}
+            >
+                <View >
+                    <Text style={[styles.drawerLblStyle, { marginTop: 40 }]}>
+                        Sign Out
+                    </Text>
+                </View>
+            </Pressable>
 
 
 
@@ -127,13 +142,13 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center'
         , marginLeft: 20,
-        borderRadius:10
+        borderRadius: 10
     },
     selectedButton: {
         backgroundColor: '#43242e',
-      },
-      selectedButtonTxt: {
+    },
+    selectedButtonTxt: {
         color: '#c4594c',
-      },
+    },
 
 })
