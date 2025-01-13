@@ -19,7 +19,7 @@ const DrawerContent = (props) => {
     const [selectedButton, setSelectedButton] = useState(null);
 
     const buttonData = [
-        { id: '1', label: 'Start', screen: Screen1 },
+        { id: '1', label: 'Shop', screen: Screen1 },
         { id: '2', label: 'Your Cart', screen: Screen2 },
         { id: '3', label: 'Favourites', screen: Screen3 },
         { id: '4', label: 'Your Orders', screen: Screen4 },
